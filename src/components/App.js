@@ -22,11 +22,11 @@ function App() {
         <MessageInput />
       </div>
 
-      {true && <AuthModal />}
-      {true && <AllRoomsModal />}
-      {true && <CreateNewRoomModal />}
-      {true && <OnlineUsersModal />}
-      {true && <SettingsModal />}
+      {false && <AuthModal />}
+      {false && <AllRoomsModal />}
+      {false && <CreateNewRoomModal />}
+      {false && <OnlineUsersModal />}
+      {false && <SettingsModal />}
 
     </div>
   );
