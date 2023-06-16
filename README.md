@@ -1,1 +1,1 @@
-# ChatProject by nightDEVS team
+# Chat Project by nightDEVS team
