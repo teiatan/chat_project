@@ -1,5 +1,5 @@
 export function ToolBar() {
     return (
-        <div>Toolbar</div>
+        <div className="border grid place-items-center">Toolbar</div>
     );
 }

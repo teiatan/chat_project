@@ -29,7 +29,7 @@ export function MessagesList() {
         }
     ];
     return(
-    <div>
+    <div className="">
         {messagesSampleArray.map(message => {
             const {id, owner, content, createdAt} = message;
             return(

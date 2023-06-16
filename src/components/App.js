@@ -5,18 +5,18 @@ import { AuthModal } from "./Modals/AuthModal";
 import { CreateNewRoomModal } from "./Modals/CreateNewRoomModal";
 import { OnlineUsersModal } from "./Modals/OnlineUsersModal";
 import { SettingsModal } from "./Modals/SettingsModal";
-import { MessageInput } from "./TextInput/MessageInput";
+import { MessageInput } from "./MessageInput/MessageInput";
 import { ToolBar } from "./ToolBar/Toolbar";
 
 function App() {
   return (
-    <div>
+    <div className="flex w-screen h-screen">
 
-      <div>
+      <div className="w-[20vw] grid place-items-center border">
         <ActiveRooms />
       </div>
 
-      <div>
+      <div className="w-[80vw] grid grid-rows-[5vh_75vh_20vh] border">
         <ToolBar />
         <MessagesList />
         <MessageInput />
