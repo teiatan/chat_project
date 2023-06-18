@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="flex w-screen h-screen">
 
-      <div className="w-[20vw] grid place-items-center border">
+      <div className="w-[20vw] p-4 border">
         <ActiveRooms />
       </div>
 
