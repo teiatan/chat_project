@@ -5,7 +5,7 @@ import { useState } from "react";
 import { FilterRooms } from "./FilterRooms";
 
 export function ActiveRooms({rooms=[activeRoom]}) {
-    const [isSideBarOpen, setIsSideBarOpen] = useState(true);
+    const [isSideBarOpen] = useState(true);
 
     return (
         <div className="flex flex-col justify-between h-full">
