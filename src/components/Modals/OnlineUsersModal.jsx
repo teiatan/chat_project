@@ -1,6 +1,6 @@
 import { ModalCover } from "./ModalCover";
 
-export function OnlineUsersModal() {
+export const OnlineUsersModal = () => {
     return(
         <ModalCover>
             <div>OnlineUsersModal</div>

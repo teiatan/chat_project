@@ -1,6 +1,6 @@
 import { ModalCover } from "./ModalCover";
 
-export function CreateNewRoomModal() {
+export const CreateNewRoomModal = () => {
     return(
         <ModalCover>
             <div>CreateNewRoomModal</div>

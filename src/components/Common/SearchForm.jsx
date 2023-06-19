@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export function SearchForm({onSubmit, label, placeholder, formStyles='', buttonStyles='', inputStyles='', labelStyles=''}) {
+export const SearchForm = ({onSubmit, label, placeholder, formStyles='', buttonStyles='', inputStyles='', labelStyles=''}) => {
 
     const [value, setValue] = useState('');
 
@@ -19,7 +19,7 @@ export function SearchForm({onSubmit, label, placeholder, formStyles='', buttonS
             <input
                 className={`${inputStyles}`}
                 type="text"
-                autocomplete="off"
+                autoComplete="off"
                 value={value}
                 name="search"
                 onChange={handleChange}

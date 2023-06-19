@@ -1,7 +1,7 @@
-export function OneActiveRoom({name, amountOfActiveUsers, lastMessage}) {
+export const OneActiveRoom = ({name, amountOfActiveUsers, lastMessage}) => {
     return (
         <div className="relative border w-full p-4 flex gap-2">
-            
+
             <div className="border flex justify-center items-center p-4">
                 {name.slice(0,2).toUpperCase()}
             </div>

@@ -7,8 +7,17 @@ import { OnlineUsersModal } from "./Modals/OnlineUsersModal";
 import { SettingsModal } from "./Modals/SettingsModal";
 import { MessageInput } from "./MessageInput/MessageInput";
 import { ToolBar } from "./ToolBar/Toolbar";
+import { useState } from "react";
+import { RulesModal } from "./Modals/RulesModal";
 
 function App() {
+  const [user, setUser] = useState({userName:'', id:''});
+  const [openedModal, setOpenedModal] = useState('Auth');
+
+  const closeModal = () => {
+    setOpenedModal('');
+  }
+
   return (
     <div className="flex w-screen h-screen">
 
@@ -21,12 +30,13 @@ function App() {
         <MessagesList />
         <MessageInput />
       </div>
-
-      {false && <AuthModal />}
-      {false && <AllRoomsModal />}
-      {false && <CreateNewRoomModal />}
-      {false && <OnlineUsersModal />}
-      {false && <SettingsModal />}
+      
+      {(openedModal === 'Auth') && <AuthModal onClose={closeModal} changeModal={setOpenedModal} setUser={setUser}/>}
+      {(openedModal === 'AllRooms') && <AllRoomsModal onClose={closeModal} />}
+      {(openedModal === 'CreateNewRoom') && <CreateNewRoomModal onClose={closeModal} />}
+      {(openedModal === 'OnlineUsers') && <OnlineUsersModal onClose={closeModal} />}
+      {(openedModal === 'Settings') && <SettingsModal onClose={closeModal} />}
+      {(openedModal === 'Rules') && <RulesModal onClose={closeModal} user={user} changeModal={setOpenedModal}/>}
 
     </div>
   );

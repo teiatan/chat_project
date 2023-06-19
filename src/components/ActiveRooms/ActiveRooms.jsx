@@ -4,7 +4,7 @@ import { SearchForm } from "components/Common/SearchForm";
 import { useState } from "react";
 import { FilterRooms } from "./FilterRooms";
 
-export function ActiveRooms({rooms=[activeRoom]}) {
+export const ActiveRooms = ({rooms=[activeRoom]}) => {
     const [isSideBarOpen] = useState(true);
 
     return (
