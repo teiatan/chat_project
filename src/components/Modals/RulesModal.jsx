@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { ModalCover } from "./ModalCover";
 
 export const RulesModal = ({onClose, changeModal, user}) => {
@@ -15,4 +16,13 @@ export const RulesModal = ({onClose, changeModal, user}) => {
             <div>RulesModal</div>
         </ModalCover>
     )
-}
+};
+
+RulesModal.propTypes = {
+    onClose: PropTypes.func,
+    changeModal: PropTypes.func,
+    user: PropTypes.shape({
+        id: PropTypes.string.isRequired,
+        userName: PropTypes.string.isRequired
+    }),
+};

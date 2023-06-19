@@ -15,8 +15,15 @@ export const SearchForm = ({onSubmit, label, placeholder, formStyles='', buttonS
     return (
         <form onSubmit={handleSubmit} className={`relative w-full flex border ${formStyles}`}>
 
-            <label className={`${labelStyles}`}>{label}</label>
+            <label 
+                htmlFor={label} 
+                className={`${labelStyles}`}
+            >
+                {label}
+            </label>
+
             <input
+                id={label}
                 className={`${inputStyles}`}
                 type="text"
                 autoComplete="off"
@@ -27,6 +34,7 @@ export const SearchForm = ({onSubmit, label, placeholder, formStyles='', buttonS
             />
 
             <button type="submit" className={`absolute right-0 ${buttonStyles}`}>🔍</button>
+            
         </form> 
     )
 };

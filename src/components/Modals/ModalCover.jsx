@@ -17,6 +17,7 @@ export const ModalCover = ({children, onClose=()=>{}, wrapperStyles, containerSt
 
     return (
         <div 
+            onMouseDown={onClose}
             className={`fixed w-screen h-screen flex justify-center items-center bg-sky-900/50 ${wrapperStyles}`}
         >
 

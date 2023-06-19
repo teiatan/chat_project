@@ -19,7 +19,7 @@ function App() {
   }
 
   return (
-    <div className="flex w-screen h-screen">
+    <div className="flex w-screen h-screen overflow-hidden">
 
       <div className="w-[20vw] p-4 border">
         <ActiveRooms />
