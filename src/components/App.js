@@ -13,8 +13,8 @@ import { Header } from "./Header/Header";
 
 
 function App() {
-  const [user, setUser] = useState({userName:'', id:''});
-  const [openedModal, setOpenedModal] = useState('Auth');
+  const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('user')) ?? {userName:'', id:''});
+  const [openedModal, setOpenedModal] = useState(() => JSON.parse(localStorage.getItem('user')) ?? 'Auth');
   const [messages, setMessages] = useState([]);
  
   // приймання нових повідомлень з бекенду
@@ -24,7 +24,7 @@ function App() {
   //   })
   // }, []);
 
-  
+
 
   const closeModal = () => {
     setOpenedModal('');
@@ -32,7 +32,7 @@ function App() {
 
   return (
     <>
-      <Header />
+      <Header userName={user.userName}/>
     
       <div className="flex w-screen h-screen overflow-hidden pt-[80px]">
 
