@@ -10,21 +10,20 @@ import { ToolBar } from "./ToolBar/Toolbar";
 import { useState } from "react";
 import { RulesModal } from "./Modals/RulesModal";
 import { Header } from "./Header/Header";
+import { openAvtiveRoomsWidth, closedAvtiveRoomsWidth } from "utils/variables";
 
 
 function App() {
   const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('user')) ?? {userName:'', id:''});
-  const [openedModal, setOpenedModal] = useState(() => JSON.parse(localStorage.getItem('user')) ?? 'Auth');
   const [messages, setMessages] = useState([]);
- 
+  const [openedModal, setOpenedModal] = useState(() => JSON.parse(localStorage.getItem('user')) ?? 'Auth');
+  const [areActiveRoomsOpen, setAreActiveRoomsOpen] = useState(true);
   // приймання нових повідомлень з бекенду
   // useEffect(()=>{
   //   socket.on("message", message => {
   //     setMessages(prevMessages => [...prevMessages, message])
   //   })
   // }, []);
-
-
 
   const closeModal = () => {
     setOpenedModal('');
@@ -36,11 +35,20 @@ function App() {
     
       <div className="flex w-screen h-screen overflow-hidden pt-[80px]">
 
-        <div className="w-[345px] p-4 border">
-          <ActiveRooms />
+        <div className={`
+          p-4 border
+          ${areActiveRoomsOpen ? `w-[${openAvtiveRoomsWidth}]` : `w-[${closedAvtiveRoomsWidth}]`}
+        `}>
+          <ActiveRooms 
+            setAreActiveRoomsOpen={setAreActiveRoomsOpen}
+            areActiveRoomsOpen={areActiveRoomsOpen}
+          />
         </div>
 
-        <div className="w-[calc(100vw-345px)] grid grid-rows-[80px_calc(100vh-80px-80px-160px)_160px] border">
+        <div className={`
+          grid grid-rows-[80px_calc(100vh-80px-80px-160px)_160px] border
+          ${areActiveRoomsOpen ? `w-[calc(100vw-${openAvtiveRoomsWidth})]` : `w-[calc(100vw-${closedAvtiveRoomsWidth})]`}
+        `}>
           <ToolBar />
           <MessagesList messages={messages}/>
           <MessageInput setMessages={setMessages}/>

@@ -1,11 +1,9 @@
 import { activeRoom } from "samples/activeRoom"
 import { OneActiveRoom } from "./OneActiveRoom"
 import { SearchForm } from "components/Common/SearchForm";
-import { useState } from "react";
 import { FilterRooms } from "./FilterRooms";
 
-export const ActiveRooms = ({rooms=[activeRoom]}) => {
-    const [isSideBarOpen] = useState(true);
+export const ActiveRooms = ({rooms=[activeRoom], areActiveRoomsOpen, setAreActiveRoomsOpen}) => {
 
     return (
         <div className="flex flex-col justify-between h-full">
@@ -21,10 +19,10 @@ export const ActiveRooms = ({rooms=[activeRoom]}) => {
 
                     <button className="w-full">🡹</button>
 
-                    {isSideBarOpen ?
-                        <button className="absolute -right-6">🢀</button>
+                    {areActiveRoomsOpen ?
+                        <button className="absolute -right-6" onClick={()=>setAreActiveRoomsOpen(false)}>🢀</button>
                         :
-                        <button>🢂</button>
+                        <button className="absolute -right-6" onClick={()=>setAreActiveRoomsOpen(true)}>🢂</button>
                     }
 
                     {rooms.map(room => {
