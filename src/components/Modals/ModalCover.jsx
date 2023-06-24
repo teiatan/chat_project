@@ -22,7 +22,7 @@ export const ModalCover = ({children, onClose=()=>{}, wrapperStyles, containerSt
         >
 
             <div 
-                className={`w-[500px] h-[500px] relative flex justify-center items-center bg-cyan-100 ${containerStyles}`}
+                className={`w-[700px] h-[500px] relative flex justify-center items-center bg-cyan-100 ${containerStyles}`}
             >
                 
                 <button 

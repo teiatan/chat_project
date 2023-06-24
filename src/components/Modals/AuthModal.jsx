@@ -6,28 +6,40 @@ export const AuthModal = ({onClose, changeModal, setUser}) => {
     const [userName, setUserName] = useState('');
     const [areRulesAccepted, setAreRulesAccepted] = useState(false);
 
+    // записати айді користувача, який надав бекенд
+    // useEffect(()=> {
+    //     socket.on("connection", message => {
+    //         localStorage.setItem('user', {id:'message.id', userName});
+    //         setUser({id:'message.id', userName});
+    //     })
+    //   }, []);
+    
     const handleSubmit = () => {
         console.log(`My nickname: ${userName}`);
-        // socket.emit("connection", 'Name');
 
-        // socket.on("connection", message => {
-        // console.log(message);
-        // })
-        setUser({id:'from backend', userName});
-        // save to local storage
+        // передати на бек ім'я
+        // socket.emit("connection", userName);
+
+        
+        // видалити після підключення бекенду
+        localStorage.setItem('user', JSON.stringify({id:'userId', userName}));
+
         onClose();
     };
 
     return(
-        <ModalCover buttonStyles="hidden">
+        <ModalCover buttonStyles="hidden" wrapperStyles="bg-white" containerStyles="bg-white">
             <form 
                 onSubmit={handleSubmit}
-                className="flex flex-col justify-center items-center p-4"
+                className="h-full flex flex-col justify-center items-center p-4 text-lg"
             >
 
-                <h2>Вітаємо у чаті "Базікало"!</h2>
+                <h2 className="text-3xl">Вітаємо у чаті "Базікало"!</h2>
 
-                <label htmlFor="userName">
+                <label 
+                    htmlFor="userName"
+                    className="text-center"
+                >
                     Введіть своє ім’я чи нікнейм та спілкуйтесь без обмежень
                     <input 
                         type="text" 
@@ -36,7 +48,7 @@ export const AuthModal = ({onClose, changeModal, setUser}) => {
                         autoFocus
                         autoComplete="off"
                         placeholder="Мій нікнейм"
-                        className="w-full"
+                        className="border my-[20px] w-[40%] border-slate-950 rounded-lg"
                         value={userName}
                         onChange={e => setUserName(e.target.value)}
                     />
@@ -59,7 +71,16 @@ export const AuthModal = ({onClose, changeModal, setUser}) => {
                         </button>
                 </label>
 
-                {areRulesAccepted && userName !== '' && <button type="submit" className="bg-teal-700">Вперед до спілкування!</button>}
+                    <button 
+                        type="submit"
+                        disabled = {!areRulesAccepted || userName === ''}
+                        className={`
+                            ${(!areRulesAccepted || userName === '') && 'opacity-0'}
+                            bg-black text-white my-[30px] p-2 rounded-lg
+                        `}
+                    >
+                        Вперед до спілкування!
+                    </button>
                 
             </form>
         </ModalCover>
