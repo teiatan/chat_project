@@ -23,7 +23,7 @@ export const MessagesList = memo(({messages, user}) => {
         <div>
             {/* <p className="my-10 text-center">Сьогодні</p> */}
             <div className="h-[calc(100vh-80px-80px-160px)] overflow-y-scroll">
-                <ul className="space-y-5 ml-5 overflow-scroll">
+                <ul className="space-y-5 ml-5">
                     {renderMessage()}
                 </ul>
             </div>

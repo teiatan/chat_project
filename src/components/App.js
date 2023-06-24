@@ -14,17 +14,17 @@ import { openAvtiveRoomsWidth, closedAvtiveRoomsWidth } from "utils/variables";
 import { nanoid } from "nanoid";
 import { messagesArray } from "samples/messagesArray";
 
-
 function App() {
   const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('user')) ?? {userName:'', id:''});
   const [messages, setMessages] = useState([...messagesArray]);
   const [openedModal, setOpenedModal] = useState(() => JSON.parse(localStorage.getItem('user')) ?? 'Auth');
   const [areActiveRoomsOpen, setAreActiveRoomsOpen] = useState(true);
-  // приймання нових повідомлень з бекенду
+
   // useEffect(()=>{
-  //   socket.on("message", message => {
-  //     setMessages(prevMessages => [...prevMessages, message])
-  //   })
+    // приймання нових повідомлень з бекенду
+    // socket.on("message", message => {
+    //   setMessages(prevMessages => [...prevMessages, message])
+    // })
   // }, []);
 
   const closeModal = () => {

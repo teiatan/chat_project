@@ -3,6 +3,7 @@ import Picker from '@emoji-mart/react'
 import { AiOutlinePaperClip } from "react-icons/ai";
 import { BiSmile } from "react-icons/bi";
 import { BsSend } from "react-icons/bs";
+import { user1 } from "samples/users";
 
 export const MessageInput = memo(({addNewMessage}) => {
     const [message, setMessage] = useState('');
@@ -17,6 +18,11 @@ export const MessageInput = memo(({addNewMessage}) => {
     const handleSendingMessage = () => {
         addNewMessage(message);
         setMessage('');
+
+        // видалити після налаштування бекенду
+        setTimeout(() => {
+            addNewMessage('Test message', user1)
+        }, 3000);
     };
 
     const handleKeyDown = (event) => {
@@ -25,6 +31,7 @@ export const MessageInput = memo(({addNewMessage}) => {
         }
         if (event.key === 'Enter') {
             onChangeHandler(event);
+            handleSendingMessage();
             setMessage('');
         }
     };
