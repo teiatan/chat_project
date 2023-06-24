@@ -1,5 +1,5 @@
-import { useEffect } from "react";
 import PropTypes from 'prop-types';
+import { useEffect } from "react";
 
 export const ModalCover = ({children, onClose=()=>{}, wrapperStyles, containerStyles, buttonStyles}) => {
 

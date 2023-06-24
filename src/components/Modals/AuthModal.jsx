@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import { useState } from "react";
 import { ModalCover } from "./ModalCover";
 
@@ -15,14 +16,12 @@ export const AuthModal = ({onClose, changeModal, setUser}) => {
     //   }, []);
     
     const handleSubmit = () => {
-        console.log(`My nickname: ${userName}`);
-
-        // передати на бек ім'я
-        // socket.emit("connection", userName);
-
-        
         // видалити після підключення бекенду
         localStorage.setItem('user', JSON.stringify({id:'userId', userName}));
+        setUser({id:'userId', userName});
+        
+        // передати на бек ім'я
+        // socket.emit("connection", userName);
 
         onClose();
     };
@@ -84,5 +83,11 @@ export const AuthModal = ({onClose, changeModal, setUser}) => {
                 
             </form>
         </ModalCover>
-    )
+    );
+};
+
+AuthModal.propTypes = {
+    onClose: PropTypes.func, 
+    changeModal: PropTypes.func, 
+    setUser: PropTypes.func
 }
