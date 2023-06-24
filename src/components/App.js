@@ -12,11 +12,12 @@ import { RulesModal } from "./Modals/RulesModal";
 import { Header } from "./Header/Header";
 import { openAvtiveRoomsWidth, closedAvtiveRoomsWidth } from "utils/variables";
 import { nanoid } from "nanoid";
+import { messagesArray } from "samples/messagesArray";
 
 
 function App() {
   const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('user')) ?? {userName:'', id:''});
-  const [messages, setMessages] = useState([]);
+  const [messages, setMessages] = useState([...messagesArray]);
   const [openedModal, setOpenedModal] = useState(() => JSON.parse(localStorage.getItem('user')) ?? 'Auth');
   const [areActiveRoomsOpen, setAreActiveRoomsOpen] = useState(true);
   // приймання нових повідомлень з бекенду
@@ -64,7 +65,7 @@ function App() {
           ${areActiveRoomsOpen ? `w-[calc(100vw-${openAvtiveRoomsWidth})]` : `w-[calc(100vw-${closedAvtiveRoomsWidth})]`}
         `}>
           <ToolBar />
-          <MessagesList messages={messages}/>
+          <MessagesList messages={messages} user={user}/>
           <MessageInput addNewMessage={addNewMessage}/>
         </div>
         
