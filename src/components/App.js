@@ -9,44 +9,52 @@ import { MessageInput } from "./MessageInput/MessageInput";
 import { ToolBar } from "./ToolBar/Toolbar";
 import { useState } from "react";
 import { RulesModal } from "./Modals/RulesModal";
+import { Header } from "./Header/Header";
 
 
 function App() {
   const [user, setUser] = useState({userName:'', id:''});
   const [openedModal, setOpenedModal] = useState('Auth');
+  const [messages, setMessages] = useState([]);
  
+  // приймання нових повідомлень з бекенду
   // useEffect(()=>{
-  //   socket.on("connection", message => {
-  //     console.log(message);
-  //     // set message to state
+  //   socket.on("message", message => {
+  //     setMessages(prevMessages => [...prevMessages, message])
   //   })
-  // })
+  // }, []);
+
+  
 
   const closeModal = () => {
     setOpenedModal('');
   };
 
   return (
-    <div className="flex w-screen h-screen overflow-hidden">
+    <>
+      <Header />
+    
+      <div className="flex w-screen h-screen overflow-hidden pt-[80px]">
 
-      <div className="w-[20vw] p-4 border">
-        <ActiveRooms />
+        <div className="w-[345px] p-4 border">
+          <ActiveRooms />
+        </div>
+
+        <div className="w-[calc(100vw-345px)] grid grid-rows-[80px_calc(100vh-80px-80px-160px)_160px] border">
+          <ToolBar />
+          <MessagesList messages={messages}/>
+          <MessageInput setMessages={setMessages}/>
+        </div>
+        
+        {(openedModal === 'Auth') && <AuthModal onClose={closeModal} changeModal={setOpenedModal} setUser={setUser}/>}
+        {(openedModal === 'AllRooms') && <AllRoomsModal onClose={closeModal} />}
+        {(openedModal === 'CreateNewRoom') && <CreateNewRoomModal onClose={closeModal} />}
+        {(openedModal === 'OnlineUsers') && <OnlineUsersModal onClose={closeModal} />}
+        {(openedModal === 'Settings') && <SettingsModal onClose={closeModal} />}
+        {(openedModal === 'Rules') && <RulesModal onClose={closeModal} user={user} changeModal={setOpenedModal}/>}
+
       </div>
-
-      <div className="w-[80vw] grid grid-rows-[5vh_75vh_20vh] border">
-        <ToolBar />
-        <MessagesList />
-        <MessageInput />
-      </div>
-      
-      {(openedModal === 'Auth') && <AuthModal onClose={closeModal} changeModal={setOpenedModal} setUser={setUser}/>}
-      {(openedModal === 'AllRooms') && <AllRoomsModal onClose={closeModal} />}
-      {(openedModal === 'CreateNewRoom') && <CreateNewRoomModal onClose={closeModal} />}
-      {(openedModal === 'OnlineUsers') && <OnlineUsersModal onClose={closeModal} />}
-      {(openedModal === 'Settings') && <SettingsModal onClose={closeModal} />}
-      {(openedModal === 'Rules') && <RulesModal onClose={closeModal} user={user} changeModal={setOpenedModal}/>}
-
-    </div>
+    </>
   );
 }
 
