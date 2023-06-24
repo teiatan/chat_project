@@ -8,7 +8,11 @@ export const AuthModal = ({onClose, changeModal, setUser}) => {
 
     const handleSubmit = () => {
         console.log(`My nickname: ${userName}`);
-        // backend request
+        // socket.emit("connection", 'Name');
+
+        // socket.on("connection", message => {
+        // console.log(message);
+        // })
         setUser({id:'from backend', userName});
         // save to local storage
         onClose();

@@ -10,13 +10,21 @@ import { ToolBar } from "./ToolBar/Toolbar";
 import { useState } from "react";
 import { RulesModal } from "./Modals/RulesModal";
 
+
 function App() {
   const [user, setUser] = useState({userName:'', id:''});
   const [openedModal, setOpenedModal] = useState('Auth');
+ 
+  // useEffect(()=>{
+  //   socket.on("connection", message => {
+  //     console.log(message);
+  //     // set message to state
+  //   })
+  // })
 
   const closeModal = () => {
     setOpenedModal('');
-  }
+  };
 
   return (
     <div className="flex w-screen h-screen overflow-hidden">
