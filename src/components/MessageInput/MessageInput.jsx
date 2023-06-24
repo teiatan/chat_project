@@ -4,7 +4,7 @@ import { AiOutlinePaperClip } from "react-icons/ai";
 import { BiSmile } from "react-icons/bi";
 import { BsSend } from "react-icons/bs";
 
-export const MessageInput = memo(() => {
+export const MessageInput = memo(({addNewMessage}) => {
     const [message, setMessage] = useState('');
     const [emojiPickerVisible, setEmojiPickerVisible] = useState(false);
     const inputRef = useRef(null);
@@ -15,15 +15,7 @@ export const MessageInput = memo(() => {
     };
 
     const handleSendingMessage = () => {
-        // відправка на бекенд
-        // socket.emit("message", {
-        //     owner: userId,
-        //     room: roomId,
-        //     content: 'Message',
-        // });
-
-        //додавання в стейт повідомлень
-        console.log(`Sent message: ${message}`);
+        addNewMessage(message);
         setMessage('');
     };
 

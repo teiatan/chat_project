@@ -1,10 +1,9 @@
 import { memo } from "react";
-import { messagesArray } from "samples/messagesArray";
 import { OneMessage } from "./OneMessage";
 
-export const MessagesList = memo(() => {
+export const MessagesList = memo(({messages}) => {
     const renderMessage = () => (
-        messagesArray.map(message => {
+        messages.map(message => {
             const { id, owner, content, createdAt } = message;
             return (
                 <OneMessage

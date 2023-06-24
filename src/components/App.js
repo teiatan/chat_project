@@ -11,6 +11,7 @@ import { useState } from "react";
 import { RulesModal } from "./Modals/RulesModal";
 import { Header } from "./Header/Header";
 import { openAvtiveRoomsWidth, closedAvtiveRoomsWidth } from "utils/variables";
+import { nanoid } from "nanoid";
 
 
 function App() {
@@ -27,6 +28,18 @@ function App() {
 
   const closeModal = () => {
     setOpenedModal('');
+  };
+
+  const addNewMessage = (messageText, messageUser=user) => {
+    const newMessageObject = {
+      id: nanoid(),
+      owner: messageUser,
+      content: messageText,
+      createdAt: new Date().toISOString(),
+    };
+    setMessages(prevMessages => [...prevMessages, newMessageObject]);
+    // відправка на бекенд
+    // socket.emit("message", newMessageObject);
   };
 
   return (
@@ -52,7 +65,7 @@ function App() {
         `}>
           <ToolBar />
           <MessagesList messages={messages}/>
-          <MessageInput setMessages={setMessages}/>
+          <MessageInput addNewMessage={addNewMessage}/>
         </div>
         
         {(openedModal === 'Auth') && <AuthModal onClose={closeModal} changeModal={setOpenedModal} setUser={setUser}/>}
