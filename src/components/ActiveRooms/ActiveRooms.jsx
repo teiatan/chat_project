@@ -3,21 +3,17 @@ import { OneActiveRoom } from "./OneActiveRoom"
 import { SearchForm } from "components/Common/SearchForm";
 import { FilterRooms } from "./FilterRooms";
 
-export const ActiveRooms = ({rooms=[activeRoom], areActiveRoomsOpen, setAreActiveRoomsOpen}) => {
+export const ActiveRooms = ({rooms=[activeRoom], areActiveRoomsOpen, setAreActiveRoomsOpen, setOpenedModal}) => {
 
     return (
         <div className="flex flex-col justify-between h-full">
 
-            <div className="flex flex-col justify-between h-full">
-
                 <div className="relative">
-                    <h2 className="text-center">Active Rooms</h2>
+                    {areActiveRoomsOpen && <h2 className="text-center">Активні кімнати</h2>}
 
-                    <SearchForm placeholder={'Пошук кімнат...'}/>
+                    {areActiveRoomsOpen && <SearchForm placeholder={'Пошук кімнат...'}/>}
 
-                    <FilterRooms />
-
-                    <button className="w-full">🡹</button>
+                    {areActiveRoomsOpen && <FilterRooms />}
 
                     {areActiveRoomsOpen ?
                         <button className="absolute -right-6" onClick={()=>setAreActiveRoomsOpen(false)}>🢀</button>
@@ -34,16 +30,15 @@ export const ActiveRooms = ({rooms=[activeRoom], areActiveRoomsOpen, setAreActiv
                                 name={name}
                                 amountOfActiveUsers={activeUsers.length}
                                 lastMessage={messages[messages.length - 1].content}
+                                areActiveRoomsOpen={areActiveRoomsOpen}
                             />
                         )
                     })}
                 </div>
 
-                <button>🡻</button>
-
-            </div>
-
-            <button>add new room +</button>
+            <button onClick={()=>setOpenedModal('CreateNewRoom')}>
+                {areActiveRoomsOpen ?'add new room +':'+'}
+            </button>
 
         </div>
     )

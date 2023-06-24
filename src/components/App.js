@@ -42,6 +42,7 @@ function App() {
           <ActiveRooms 
             setAreActiveRoomsOpen={setAreActiveRoomsOpen}
             areActiveRoomsOpen={areActiveRoomsOpen}
+            setOpenedModal={setOpenedModal}
           />
         </div>
 

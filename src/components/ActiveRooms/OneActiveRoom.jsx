@@ -1,4 +1,4 @@
-export const OneActiveRoom = ({name, amountOfActiveUsers, lastMessage}) => {
+export const OneActiveRoom = ({name, amountOfActiveUsers, lastMessage, areActiveRoomsOpen}) => {
     return (
         <div className="relative border w-full p-4 flex gap-2">
 
@@ -6,20 +6,22 @@ export const OneActiveRoom = ({name, amountOfActiveUsers, lastMessage}) => {
                 {name.slice(0,2).toUpperCase()}
             </div>
 
-            <div className="w-full flex flex-col justify-between">
+            {areActiveRoomsOpen &&
+                <div className="w-full flex flex-col justify-between">
 
-                <p className="absolute bottom-0 right-1">
-                    {amountOfActiveUsers}
-                </p>
+                    <p className="absolute bottom-0 right-1">
+                        {amountOfActiveUsers}
+                    </p>
 
-                <button className="absolute top-0 right-1">
-                    ...
-                </button>
-                
-                <h3 className="font-bold">{name}</h3>
-                <p className="text-xs">{lastMessage}</p>
+                    <button className="absolute top-0 right-1">
+                        ...
+                    </button>
+                    
+                    <h3 className="font-bold">{name}</h3>
+                    <p className="text-xs">{lastMessage}</p>
 
-            </div>
+                </div>
+            }
         </div>
     );
 };
