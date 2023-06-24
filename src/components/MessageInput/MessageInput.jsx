@@ -14,6 +14,19 @@ export const MessageInput = memo(() => {
         setMessage(event.target.value);
     };
 
+    const handleSendingMessage = () => {
+        // відправка на бекенд
+        // socket.emit("message", {
+        //     owner: userId,
+        //     room: roomId,
+        //     content: 'Message',
+        // });
+
+        //додавання в стейт повідомлень
+        console.log(`Sent message: ${message}`);
+        setMessage('');
+    };
+
     const handleKeyDown = (event) => {
         if (event.key === 'Escape') {
             setMessage('');
@@ -76,6 +89,8 @@ export const MessageInput = memo(() => {
                 </div>
                 <button
                     className="px-4 py-2 rounded mt-2 border bg-white flex items-center"
+                    type="button"
+                    onClick={handleSendingMessage}
                 >
                     <BsSend className="text-xl" />
                 </button>
