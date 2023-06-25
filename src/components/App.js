@@ -51,7 +51,7 @@ function App() {
 
         <div className={`
           p-4 border
-          ${areActiveRoomsOpen ? `w-[${openAvtiveRoomsWidth}]` : `w-[${closedAvtiveRoomsWidth}]`}
+          ${areActiveRoomsOpen ? `w-[${openAvtiveRoomsWidth}px]` : `w-[${closedAvtiveRoomsWidth}px]`}
         `}>
           <ActiveRooms 
             setAreActiveRoomsOpen={setAreActiveRoomsOpen}
@@ -62,7 +62,7 @@ function App() {
 
         <div className={`
           grid grid-rows-[80px_calc(100vh-80px-80px-160px)_160px] border
-          ${areActiveRoomsOpen ? `w-[calc(100vw-${openAvtiveRoomsWidth})]` : `w-[calc(100vw-${closedAvtiveRoomsWidth})]`}
+          ${areActiveRoomsOpen ? `w-[calc(100vw-${openAvtiveRoomsWidth}px)]` : `w-[calc(100vw-${closedAvtiveRoomsWidth}px)]`}
         `}>
           <ToolBar />
           <MessagesList messages={messages} user={user}/>
