@@ -1,2 +1,2 @@
-export const openAvtiveRoomsWidth = 345;
-export const closedAvtiveRoomsWidth = 102;
+export const openAvtiveRoomsWidth = '345px';
+export const closedAvtiveRoomsWidth = '102px';
