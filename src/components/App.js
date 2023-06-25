@@ -15,23 +15,23 @@ import { nanoid } from "nanoid";
 import { messagesArray } from "samples/messagesArray";
 
 function App() {
-  const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('user')) ?? {userName:'', id:''});
+  const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('user')) ?? { userName: '', id: '' });
   const [messages, setMessages] = useState([...messagesArray]);
   const [openedModal, setOpenedModal] = useState(() => JSON.parse(localStorage.getItem('user')) ?? 'Auth');
   const [areActiveRoomsOpen, setAreActiveRoomsOpen] = useState(true);
 
   // useEffect(()=>{
-    // приймання нових повідомлень з бекенду
-    // socket.on("message", message => {
-    //   setMessages(prevMessages => [...prevMessages, message])
-    // })
+  // приймання нових повідомлень з бекенду
+  // socket.on("message", message => {
+  //   setMessages(prevMessages => [...prevMessages, message])
+  // })
   // }, []);
 
   const closeModal = () => {
     setOpenedModal('');
   };
 
-  const addNewMessage = (messageText, messageUser=user) => {
+  const addNewMessage = (messageText, messageUser = user) => {
     const newMessageObject = {
       id: nanoid(),
       owner: messageUser,
@@ -45,15 +45,15 @@ function App() {
 
   return (
     <>
-      <Header userName={user.userName}/>
-    
+      <Header userName={user.userName} />
+
       <div className="flex w-screen h-screen overflow-hidden pt-[80px]">
 
         <div className={`
           p-4 border
           ${areActiveRoomsOpen ? `w-[${openAvtiveRoomsWidth}]` : `w-[${closedAvtiveRoomsWidth}]`}
         `}>
-          <ActiveRooms 
+          <ActiveRooms
             setAreActiveRoomsOpen={setAreActiveRoomsOpen}
             areActiveRoomsOpen={areActiveRoomsOpen}
             setOpenedModal={setOpenedModal}
@@ -65,16 +65,16 @@ function App() {
           ${areActiveRoomsOpen ? `w-[calc(100vw-345px)]` : `w-[calc(100vw-102px)]`}
         `}>
           <ToolBar />
-          <MessagesList messages={messages} user={user}/>
-          <MessageInput addNewMessage={addNewMessage}/>
+          <MessagesList messages={messages} user={user} />
+          <MessageInput addNewMessage={addNewMessage} />
         </div>
-        
-        {(openedModal === 'Auth') && <AuthModal onClose={closeModal} changeModal={setOpenedModal} setUser={setUser}/>}
+
+        {(openedModal === 'Auth') && <AuthModal onClose={closeModal} changeModal={setOpenedModal} setUser={setUser} />}
         {(openedModal === 'AllRooms') && <AllRoomsModal onClose={closeModal} />}
         {(openedModal === 'CreateNewRoom') && <CreateNewRoomModal onClose={closeModal} />}
         {(openedModal === 'OnlineUsers') && <OnlineUsersModal onClose={closeModal} />}
         {(openedModal === 'Settings') && <SettingsModal onClose={closeModal} />}
-        {(openedModal === 'Rules') && <RulesModal onClose={closeModal} user={user} changeModal={setOpenedModal}/>}
+        {(openedModal === 'Rules') && <RulesModal onClose={closeModal} user={user} changeModal={setOpenedModal} />}
 
       </div>
     </>
