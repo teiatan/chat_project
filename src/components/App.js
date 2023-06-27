@@ -17,8 +17,12 @@ import { messagesArray } from "samples/messagesArray";
 function App() {
   const [user, setUser] = useState(() => JSON.parse(localStorage.getItem('user')) ?? { userName: '', id: '' });
   const [messages, setMessages] = useState([...messagesArray]);
+  const [currentRoom, setCurrentRoom] = useState({name: 'general', id:'1408'});
+  const [openedRooms, setOpenedRooms] = useState(['1408']);
+  const [allRooms] = useState(['1408','111']);
   const [openedModal, setOpenedModal] = useState(() => JSON.parse(localStorage.getItem('user')) ?? 'Auth');
   const [areActiveRoomsOpen, setAreActiveRoomsOpen] = useState(true);
+
 
   // useEffect(()=>{
   // приймання нових повідомлень з бекенду
@@ -57,6 +61,11 @@ function App() {
             setAreActiveRoomsOpen={setAreActiveRoomsOpen}
             areActiveRoomsOpen={areActiveRoomsOpen}
             setOpenedModal={setOpenedModal}
+            openedRooms={openedRooms}
+            setOpenedRooms={setOpenedRooms}
+            currentRoom ={currentRoom}
+            setCurrentRoom={setCurrentRoom}
+            messages={messages}
           />
         </div>
 
@@ -65,12 +74,12 @@ function App() {
           ${areActiveRoomsOpen ? `w-[calc(100vw-345px)]` : `w-[calc(100vw-102px)]`}
         `}>
           <ToolBar />
-          <MessagesList messages={messages} user={user} />
+          <MessagesList messages={messages.filter(message => message.roomId === currentRoom.id)} user={user} />
           <MessageInput addNewMessage={addNewMessage} />
         </div>
 
         {(openedModal === 'Auth') && <AuthModal onClose={closeModal} changeModal={setOpenedModal} setUser={setUser} />}
-        {(openedModal === 'AllRooms') && <AllRoomsModal onClose={closeModal} />}
+        {(openedModal === 'AllRooms') && <AllRoomsModal onClose={closeModal} allRooms={allRooms} setCurrentRoom={setCurrentRoom}/>}
         {(openedModal === 'CreateNewRoom') && <CreateNewRoomModal onClose={closeModal} />}
         {(openedModal === 'OnlineUsers') && <OnlineUsersModal onClose={closeModal} />}
         {(openedModal === 'Settings') && <SettingsModal onClose={closeModal} />}
