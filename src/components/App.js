@@ -41,6 +41,7 @@ function App() {
       owner: messageUser,
       content: messageText,
       createdAt: new Date().toISOString(),
+      roomId: currentRoom.id
     };
     setMessages(prevMessages => [...prevMessages, newMessageObject]);
     // відправка на бекенд

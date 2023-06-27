@@ -6,7 +6,8 @@ export const activeRooms = [
         name: 'головна',
         activeUsers: [
             user1,
-            user2
+            user2,
+            'me'
         ]
     },
     {
@@ -15,7 +16,8 @@ export const activeRooms = [
         activeUsers: [
             user1,
             user3,
-            user4
+            user4,
+            'me'
         ]
     }
 ];
