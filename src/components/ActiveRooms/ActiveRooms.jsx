@@ -1,9 +1,9 @@
-import { activeRoom } from "samples/activeRoom"
+import { activeRooms } from "samples/activeRooms"
 import { OneActiveRoom } from "./OneActiveRoom"
 import { SearchForm } from "components/Common/SearchForm";
 import { FilterRooms } from "./FilterRooms";
 
-export const ActiveRooms = ({rooms=[activeRoom], areActiveRoomsOpen, setAreActiveRoomsOpen, setOpenedModal}) => {
+export const ActiveRooms = ({rooms=activeRooms, areActiveRoomsOpen, setAreActiveRoomsOpen, setOpenedModal, messages, setCurrentRoom}) => {
 
     return (
         <div className="flex flex-col justify-between h-full">
@@ -22,16 +22,19 @@ export const ActiveRooms = ({rooms=[activeRoom], areActiveRoomsOpen, setAreActiv
                     }
 
                     {rooms.map(room => {
-                        const {id, name, activeUsers, messages} = room;
+                        const {id, name, activeUsers} = room;
+                        const thisRoomMessages = messages.filter(message => message.roomId === id)
+                        const lastMessage = thisRoomMessages[thisRoomMessages.length - 1]?.content
                         return(
+                            <div key={id} onClick={()=>setCurrentRoom({name, id})}>
                             <OneActiveRoom 
-                                key={id}
                                 id={id}
                                 name={name}
                                 amountOfActiveUsers={activeUsers.length}
-                                lastMessage={messages[messages.length - 1].content}
+                                lastMessage={lastMessage}
                                 areActiveRoomsOpen={areActiveRoomsOpen}
                             />
+                            </div>
                         )
                     })}
                 </div>
