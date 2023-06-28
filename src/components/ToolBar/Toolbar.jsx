@@ -1,5 +1,5 @@
-export const ToolBar = () => {
+export const ToolBar = ({roomName}) => {
     return (
-        <div className="border grid place-items-center">Toolbar</div>
+        <div className="border flex items-center p-4">{roomName}</div>
     );
 }

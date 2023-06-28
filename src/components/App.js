@@ -74,7 +74,7 @@ function App() {
           grid grid-rows-[80px_calc(100vh-80px-80px-160px)_160px] border
           ${areActiveRoomsOpen ? `w-[calc(100vw-345px)]` : `w-[calc(100vw-102px)]`}
         `}>
-          <ToolBar />
+          <ToolBar roomName={currentRoom.name}/>
           <MessagesList messages={messages.filter(message => message.roomId === currentRoom.id)} user={user} />
           <MessageInput addNewMessage={addNewMessage} />
         </div>
