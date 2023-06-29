@@ -1,6 +1,6 @@
 import { ModalCover } from "./ModalCover";
 
-export function SettingsModal() {
+export const SettingsModal = () => {
     return(
         <ModalCover>
             <div>SettingsModal</div>

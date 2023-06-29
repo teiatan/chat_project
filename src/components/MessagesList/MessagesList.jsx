@@ -1,48 +1,45 @@
+import { memo, useEffect, useRef } from "react";
 import { OneMessage } from "./OneMessage";
 
-export function MessagesList() {
-    const messagesSampleArray = [
-        {
-            id: 'fvf234dr4',
-            owner: {
-                id: 'qqqqwww13',
-                userName: 'Павло'
-            },
-            content: 'Привіт всім!',
-            createdAt: '2023-06-16T20:46:40.382Z', // new Date().toISOString(),
-        },{
-            id: 'sdfer45dhg3',
-            owner: {
-                id: 'eeerrr14',
-                userName: 'Олена'
-            },
-            content: 'Привіт, Павло',
-            createdAt: '2023-06-16T20:47:40.382Z',
-        },{
-            id: 'dg56ghj33g',
-            owner: {
-                id: 'qqqqwww13',
-                userName: 'Павло'
-            },
-            content: 'Як справи?',
-            createdAt: '2023-06-16T20:47:40.382Z',
+export const MessagesList = memo(({ messages, user }) => {
+    const messagesRef = useRef(null);
+
+    useEffect(() => {
+        scrollToBottom();
+    }, [messages]);
+
+    const scrollToBottom = () => {
+        if (messagesRef.current) {
+            messagesRef.current.scrollIntoView({ behavior: 'auto', block: 'end' });
         }
-    ];
-    return(
-    <div>
-        {messagesSampleArray.map(message => {
-            const {id, owner, content, createdAt} = message;
-            return(
-                <OneMessage 
+    };
+
+    const renderMessage = () => (
+        messages.map(message => {
+            const { id, owner, content, createdAt } = message;
+            return (
+                <OneMessage
                     key={id}
                     id={id}
                     content={content}
                     ownerId={owner.id}
                     ownerName={owner.userName}
                     createdAt={createdAt}
+                    myId={user.id}
                 />
-            )
-        })}
-    </div>
+            );
+        })
     );
-}
+
+    return (
+        <div>
+            {/* <p className="my-10 text-center">Сьогодні</p> */}
+            <div className="h-[calc(100vh-80px-80px-160px)] overflow-y-scroll ">
+                <ul className="space-y-5 ml-5" ref={messagesRef}>
+                    {renderMessage()}
+                    <div ref={messagesRef}></div>
+                </ul>
+            </div>
+        </div>
+    );
+});

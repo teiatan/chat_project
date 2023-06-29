@@ -1,9 +1,9 @@
-import { ModalCover } from "./ModalCover";
+import { ModalCover } from './ModalCover';
 
-export function AllRoomsModal() {
-    return(
-        <ModalCover>
+export const AllRoomsModal = ({ onClose }) => {
+    return (
+        <ModalCover onClose={onClose}>
             <div>AllRoomsModal</div>
         </ModalCover>
-    )
-}
+    );
+};
