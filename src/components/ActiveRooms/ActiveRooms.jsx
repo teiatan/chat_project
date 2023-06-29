@@ -2,6 +2,7 @@ import { activeRooms } from 'samples/activeRooms';
 import { OneActiveRoom } from './OneActiveRoom';
 import { SearchForm } from 'components/Common/SearchForm';
 import { FilterRooms } from './FilterRooms';
+import { PiMagnifyingGlassBold } from 'react-icons/pi';
 
 export const ActiveRooms = ({
     rooms = activeRooms,
@@ -68,9 +69,20 @@ export const ActiveRooms = ({
                 })}
             </div>
 
-            <button onClick={() => setOpenedModal('CreateNewRoom')}>
-                {areActiveRoomsOpen ? 'add new room +' : '+'}
-            </button>
+            <div className="flex flex-col gap-[5px]">
+                <button onClick={() => setOpenedModal('AllRooms')}>
+                    {areActiveRoomsOpen ? (
+                        'знайти кімнату '
+                    ) : (
+                        <div className="flex justify-center items-center">
+                            <PiMagnifyingGlassBold />
+                        </div>
+                    )}
+                </button>
+                <button onClick={() => setOpenedModal('CreateNewRoom')}>
+                    {areActiveRoomsOpen ? 'створити кімнату +' : '+'}
+                </button>
+            </div>
         </div>
     );
 };

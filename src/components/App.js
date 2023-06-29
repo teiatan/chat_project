@@ -21,7 +21,7 @@ function App() {
   const [openedRooms, setOpenedRooms] = useState(['1408']);
   const [allRooms] = useState(['1408','111']);
   const [openedModal, setOpenedModal] = useState(() => JSON.parse(localStorage.getItem('user')) ?? 'Auth');
-  const [areActiveRoomsOpen, setAreActiveRoomsOpen] = useState(true);
+  const [areActiveRoomsOpen, setAreActiveRoomsOpen] = useState(false);
 
 
   // useEffect(()=>{
