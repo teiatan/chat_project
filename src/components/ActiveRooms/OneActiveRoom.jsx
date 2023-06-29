@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { DropDownMenu } from './DropDownMenu';
+import { RoomDropDownMenu } from '../Common/RoomDropDownMenu';
 
 export const OneActiveRoom = ({
     name,
@@ -39,9 +39,10 @@ export const OneActiveRoom = ({
                     <p className="text-xs">{lastMessage}</p>
                 </div>
             )}
-            {isDropDownMenuOpen && (
+
+            {areActiveRoomsOpen && isDropDownMenuOpen && (
                 <div className="absolute top-[20px] right-[13px]">
-                    <DropDownMenu type={type} />
+                    <RoomDropDownMenu type={type} />
                 </div>
             )}
         </div>

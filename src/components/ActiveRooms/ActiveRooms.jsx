@@ -56,7 +56,7 @@ export const ActiveRooms = ({
                     return (
                         <div
                             key={id}
-                            onClick={() => setCurrentRoom({ name, id })}
+                            onClick={() => setCurrentRoom({ name, id, type })}
                             className={
                                 currentRoom.id === id ? 'bg-[#D9D9D9]' : ''
                             }

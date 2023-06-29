@@ -7,7 +7,7 @@ import {
 } from 'react-icons/im';
 import { nanoid } from 'nanoid';
 
-export const DropDownMenu = ({ type }) => {
+export const RoomDropDownMenu = ({ type }) => {
     return (
         <DropDownField>
             <DropDownItem key={nanoid()} text={'Покинути кімнату'}>
