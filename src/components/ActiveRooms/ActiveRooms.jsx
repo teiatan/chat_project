@@ -3,6 +3,10 @@ import { OneActiveRoom } from './OneActiveRoom';
 import { SearchForm } from 'components/Common/SearchForm';
 import { FilterRooms } from './FilterRooms';
 import { PiMagnifyingGlassBold } from 'react-icons/pi';
+import {
+    BsFillArrowRightCircleFill,
+    BsFillArrowLeftCircleFill,
+} from 'react-icons/bs';
 
 export const ActiveRooms = ({
     rooms = activeRooms,
@@ -31,19 +35,19 @@ export const ActiveRooms = ({
                         className="absolute -right-6"
                         onClick={() => setAreActiveRoomsOpen(false)}
                     >
-                        🢀
+                        <BsFillArrowLeftCircleFill />
                     </button>
                 ) : (
                     <button
                         className="absolute -right-6"
                         onClick={() => setAreActiveRoomsOpen(true)}
                     >
-                        🢂
+                        <BsFillArrowRightCircleFill />
                     </button>
                 )}
 
                 {rooms.map(room => {
-                    const { id, name, activeUsers } = room;
+                    const { id, name, activeUsers, type } = room;
                     const thisRoomMessages = messages.filter(
                         message => message.roomId === id
                     );
@@ -63,6 +67,7 @@ export const ActiveRooms = ({
                                 amountOfActiveUsers={activeUsers.length}
                                 lastMessage={lastMessage}
                                 areActiveRoomsOpen={areActiveRoomsOpen}
+                                type={type}
                             />
                         </div>
                     );

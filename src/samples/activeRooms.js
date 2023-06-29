@@ -8,7 +8,8 @@ export const activeRooms = [
             user1,
             user2,
             'me'
-        ]
+        ],
+        type: 'group'
     },
     {
         id: '111',
@@ -18,6 +19,16 @@ export const activeRooms = [
             user3,
             user4,
             'me'
-        ]
+        ],
+        type: 'group'
+    },
+    {
+        id: '222',
+        name: 'Павло',
+        activeUsers: [
+            user1,
+            'me'
+        ],
+        type: '1x1'
     }
 ];
