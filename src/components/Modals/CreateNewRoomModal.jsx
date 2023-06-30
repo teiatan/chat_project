@@ -30,7 +30,7 @@ export const CreateNewRoomModal = ({ onClose }) => {
     };
 
     return (
-        <ModalCover onClose={onClose}>
+        <ModalCover /* onClose={onClose} */>
             <div className="flex flex-col gap-5 w-3/4">
                 <p className="text-center">Нова кімната</p>
                 <input
@@ -73,7 +73,7 @@ export const CreateNewRoomModal = ({ onClose }) => {
                             onClick={togglePassword}
                             className="absolute bottom-8 right-2 cursor-pointer"
                         />
-                        <p classNmae="text-sm">
+                        <p className="text-sm">
                             *Після створення кімнати ключ змінити не можна
                         </p>
                     </div>
