@@ -23,7 +23,6 @@ export const ActiveRooms = ({
                 {areActiveRoomsOpen && (
                     <h2 className="text-center">Активні кімнати</h2>
                 )}
-
                 {areActiveRoomsOpen && (
                     <SearchForm placeholder={'Пошук кімнат...'} />
                 )}
